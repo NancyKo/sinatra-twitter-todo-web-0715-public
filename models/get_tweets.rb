@@ -3,6 +3,7 @@
 # Our Gemfile has the twitter gem and config/environment requires it through Bundler.
 
 class GetTweets
+
   attr_reader :handle
 
   def initialize(handle)
@@ -11,10 +12,11 @@ class GetTweets
 
   TWITTER = Twitter::REST::Client.new do |config|
     # go to https://dev.twitter.com/apps and create your own twitter app. Then grab your keys and replace these ones
-    config.consumer_key = "SOo0mIfGvsFVP7OlrNVaRS7bE"
-    config.consumer_secret = "yzNnxhbZknAcIOWXiPAL7UWVrdqr3hBYgLJPs6sTqaYiCVEXHh"
-    config.access_token = "276237692-vwCB7oLa5TWBoDFv7MVdap6aDxzAqdVFbpyjrwQM"
-    config.access_token_secret = "iXQ7vSO7Rvq8zVnZO3u8LDRMQvTzcHCfTRDUTBB3ZNRk0"
+
+    config.consumer_key = ENV["CONSUMER_KEY"]
+    config.consumer_secret = ENV["CONSUMER_SECRET"]
+    config.access_token = ENV["ACCESS_TOKEN"]
+    config.access_token_secret = ENV["ACCESS_TOKEN_SECRET"]
   end
 
   def get_search_results
